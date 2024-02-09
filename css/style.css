@@ -1,0 +1,638 @@
+/* global values */
+* {
+  box-sizing: border-box;
+  text-decoration: none;
+}
+body {
+  font-family: "Cairo", sans-serif;
+}
+html {
+  scroll-behavior: smooth;
+}
+:root {
+  --main-color: #2196f3;
+}
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.container {
+  padding: 0 20px;
+  margin: auto;
+}
+@media (min-width: 768px) {
+  .container {
+    width: 750px;
+  }
+}
+@media (min-width: 992px) {
+  .container {
+    width: 970px;
+  }
+}
+@media (min-width: 1200px) {
+  .container {
+    width: 1170px;
+  }
+}
+.title {
+  padding: 10px 15px;
+  border: 3px solid #000;
+  font-size: 27px;
+  font-weight: bold;
+  text-transform: uppercase;
+  width: fit-content;
+  position: relative;
+  margin: 100px auto;
+}
+.title::before {
+  content: "";
+  width: 12px;
+  height: 12px;
+  background-color: var(--main-color);
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  right: -25px;
+  transform: translateY(-50%);
+}
+.title::after {
+  content: "";
+  width: 12px;
+  height: 12px;
+  background-color: var(--main-color);
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  left: -25px;
+  transform: translateY(-50%);
+}
+/* end global values */
+/* start header */
+header {
+  z-index: 2;
+  background-color: #fff;
+  box-shadow: 0 0 10px #ddd;
+}
+header .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+header .container .logo {
+  color: var(--main-color);
+  font-size: 25px;
+  font-weight: bold;
+  height: 72px;
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+header .container .logo::before {
+  content: "";
+  width: 70%;
+  height: 4px;
+  background-color: var(--main-color);
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  display: none;
+}
+header .container ul {
+  display: flex;
+}
+header .container ul li a {
+  display: block;
+  padding: 0 30px;
+  font-size: 20px;
+  color: #000;
+  position: relative;
+  height: 72px;
+  display: flex;
+  align-items: center;
+}
+header .container ul li a::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0px;
+  height: 3px;
+  background-color: var(--main-color);
+  transition: 0.3s;
+}
+header .container ul li a:hover {
+  color: var(--main-color);
+  background-color: #fafafa;
+}
+header .container ul li a:hover::before {
+  width: 100%;
+}
+@media (max-width: 767px) {
+  header .container {
+    flex-direction: column;
+  }
+  header .container ul li a {
+    padding: 0 18px;
+  }
+  header .container .logo::before {
+    display: block;
+  }
+}
+/* end header */
+/* start welcome section */
+.welcome-section {
+  height: calc(100vh - 72px);
+  background-color: #ddd;
+  position: relative;
+}
+.welcome-section .container {
+  display: flex;
+  height: 100%;
+  align-items: center;
+}
+.welcome-section .container .text {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.welcome-section .container .text h1 {
+  font-size: 40px;
+  font-weight: bold;
+  letter-spacing: -2px;
+  margin: 0;
+}
+.welcome-section .container .text p {
+  font-size: 27px;
+  font-weight: 400;
+  line-height: 50px;
+  color: #777;
+}
+.welcome-section .container img {
+  width: 600px;
+  position: relative;
+  animation: up-down 6s linear infinite;
+  border-radius: 20px;
+}
+@media (max-width: 991px) {
+  .welcome-section .container img {
+    display: none;
+  }
+  .welcome-section .container .text {
+    text-align: center;
+    padding: 0 50px;
+  }
+}
+@keyframes up-down {
+  0%,
+  25%,
+  50%,
+  75%,
+  100% {
+    top: 0;
+    left: 0;
+  }
+  12.5% {
+    top: 0;
+    left: 30px;
+  }
+  37.5% {
+    left: 0;
+    top: 30px;
+  }
+  62.5% {
+    top: 0;
+    left: -30px;
+  }
+  87.5% {
+    left: 0;
+    top: -30px;
+  }
+}
+.welcome-section > a i {
+  color: var(--main-color);
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 6%;
+  font-size: 30px;
+  animation: bouncing 1.5s linear infinite;
+}
+@keyframes bouncing {
+  0%,
+  20%,
+  80%,
+  100% {
+    bottom: 6%;
+  }
+  40%,
+  60% {
+    bottom: 3%;
+  }
+  50% {
+    bottom: 5%;
+  }
+}
+/* end welcome section */
+/* start article */
+.articles {
+  min-height: 100vh;
+}
+.articles .container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.articles .container .cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  justify-content: center;
+  gap: 35px;
+  width: 100%;
+  margin-bottom: 100px;
+}
+.articles .container .cards .card {
+  border-radius: 15px;
+  box-shadow: 0 0 10px #ddd;
+}
+
+.articles .container .cards .card .img img {
+  max-width: 100%;
+  border-top-right-radius: 15px;
+  border-top-left-radius: 15px;
+}
+.articles .container .cards .card .text {
+  padding: 0 15px;
+}
+.articles .container .cards .card h2 {
+  font-size: 20px;
+  margin-top: 40px;
+}
+.articles .container .cards .card p {
+  font-size: 17px;
+  color: #777;
+}
+.articles .container .cards .card a {
+  color: var(--main-color);
+  font-weight: bold;
+  display: block;
+  padding: 20px;
+  position: relative;
+}
+.articles .container .cards .card a::before {
+  content: "\f178";
+  font-family: "font awesome 5 free";
+  position: absolute;
+  top: 50%;
+  right: 20px;
+  transform: translateY(-50%);
+}
+.articles .container .cards .card a:hover::before {
+  animation: moving-right 0.8s linear infinite;
+}
+@keyframes moving-right {
+  0% {
+    right: 20px;
+  }
+  100% {
+    right: 10px;
+  }
+}
+/* start galery */
+.galary {
+  min-height: 100vh;
+  background-color: #ececec;
+}
+.galary .container {
+  display: flex;
+  flex-direction: column;
+}
+.galary .cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  justify-content: center;
+  gap: 15px;
+  margin-bottom: 100px;
+}
+.galary .cards .card {
+  padding: 15px;
+  width: 100%;
+  /* height: 340px; */
+  background-color: #fff;
+}
+.galary .cards .card img {
+  max-width: 100%;
+}
+/* start features */
+
+.features .container .cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 300px);
+  justify-content: center;
+  gap: 33px;
+}
+
+.features .container .cards .card .image {
+  position: relative;
+  overflow: hidden;
+}
+.features .container .cards .card img {
+  max-width: 100%;
+  position: relative;
+  z-index: -1;
+}
+
+.features .container .cards .card .content {
+  text-align: center;
+  padding: 20px;
+  position: relative;
+}
+.features .container .cards .card .image::after {
+  content: "";
+  width: 100%;
+  height: 200px;
+  background-color: #ffffff;
+  position: absolute;
+  top: 213px;
+  left: 0;
+  z-index: 3;
+  transform: skewY(25deg);
+  transition: 0.2s;
+}
+.features .container .cards .card:hover .image::after {
+  transform: skewY(-25deg);
+}
+.features .container .cards .card .content h2 {
+  font-size: 35px;
+  width: fit-content;
+  position: relative;
+  margin: auto;
+}
+.features .container .cards .card .content h2::before {
+  content: "";
+  width: 80%;
+  height: 4px;
+  position: absolute;
+  bottom: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: var(--main-color);
+}
+.features .container .cards .card .content p {
+  margin: 50px 0;
+  color: #777;
+  font-size: 22px;
+}
+.features .container .cards .card .content button {
+  color: var(--main-color);
+  border: 3px solid var(--main-color);
+  font-size: 22px;
+  padding: 10px 24px;
+  background-color: #fff;
+  border-radius: 12px;
+}
+/* start testimonials */
+.testimonials {
+  background-color: #ddd;
+  padding: 10px 0 100px;
+}
+.testimonials .container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 30px;
+}
+.testimonials .container .card {
+  padding: 20px;
+  position: relative;
+  background-color: #fff;
+  border-radius: 20px;
+}
+.testimonials .container .card h2 {
+  font-size: 24px;
+  font-weight: bold;
+  text-transform: capitalize;
+}
+.testimonials .container .card p:first-of-type {
+  text-transform: capitalize;
+}
+.testimonials .container .card p {
+  font-size: 16px;
+  color: #777;
+  line-height: 1.6;
+}
+.testimonials .container .card .stars i {
+  color: gold;
+}
+.testimonials .container .card .stars i:last-child {
+  color: #000;
+}
+.testimonials .container .card .img {
+  width: 100px;
+  height: 100px;
+  position: absolute;
+  right: 10px;
+  top: -40px;
+  border: 10px solid #ddd;
+  border-radius: 50%;
+  background-color: #ddd;
+  z-index: 3;
+}
+.testimonials .container .card .img img {
+  width: 100%;
+  border-radius: 50%;
+}
+/* start team */
+.team {
+  padding: 0 0 100px;
+}
+.team .container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 100px;
+  justify-items: end;
+}
+.team .card {
+  width: 80%;
+  padding: 20px;
+  position: relative;
+  height: 550px;
+  background-color: #ddd;
+}
+.team .card .img {
+  position: absolute;
+  width: 100%;
+  height: 60%;
+  top: 50%;
+  left: -25%;
+  transform: translateY(-60%);
+  border-radius: 20px;
+  overflow: hidden;
+}
+.team .card .img img {
+  max-width: 100%;
+}
+.team .card .icons {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  padding: 0 10px;
+}
+.team .card .content {
+  position: absolute;
+  bottom: 0;
+}
+/* start services */
+.services {
+  padding: 10px 0 100px;
+  background-color: #ddd;
+}
+.services .container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 70px;
+  justify-content: center;
+}
+.services .card {
+  padding: 20px 20px 10px;
+  background-color: #fff;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  transition: 0.3s;
+  box-shadow: 0 0 10px #77777791;
+}
+.services .card .fill {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  display: flex;
+  justify-content: center;
+}
+.services .card .fill span {
+  height: 100%;
+  width: 0;
+  background-color: var(--main-color);
+  transition: 0.3s;
+}
+.services .card:hover {
+  transform: translateY(-15px);
+}
+.services .card:hover .fill span {
+  width: 50%;
+}
+.services .card i {
+  font-size: 50px;
+  color: #ddd;
+  padding: 20px;
+}
+.services .card h2 {
+  font-size: 30px;
+  margin: 20px 0;
+  color: var(--main-color);
+  font-weight: bold;
+  text-transform: capitalize;
+}
+.services .card .details {
+  padding: 20px 0 0;
+  display: flex;
+  justify-content: space-between;
+}
+.services .card::after {
+  content: "";
+  width: 100px;
+  height: 50px;
+  background-color: var(--main-color);
+  position: absolute;
+  left: -20px;
+  bottom: 0;
+  transform: skewX(30deg);
+  z-index: 2;
+}
+.services .card::before {
+  content: "";
+  width: 100px;
+  height: 50px;
+  background-color: #ddd;
+  position: absolute;
+  left: 20px;
+  bottom: 0;
+  transform: skewX(30deg);
+  z-index: 2;
+}
+
+.services .card .details span {
+  font-size: 25px;
+  font-weight: bold;
+  z-index: 3;
+  color: #fff;
+}
+.services .card .details a {
+  color: var(--main-color);
+  font-size: 18px;
+  text-transform: capitalize;
+}
+/* start our skills */
+.skills {
+  padding: 10px 0 100px;
+  background-color: #fff;
+}
+.skills .container {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+.skills .container .image {
+  width: 40%;
+}
+@media (max-width: 767px) {
+  .skills .container .image {
+    display: none;
+  }
+}
+.skills .container .image img {
+  max-width: 100%;
+}
+.skills .container .statistics {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 40%;
+  padding-left: 20px;
+  flex: 1;
+}
+.skills .container .statistics .box .text {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.skills .container .statistics .box .progress {
+  height: 30px;
+  background-color: #ddd;
+}
+.skills .container .statistics .box .progress span {
+  height: 100%;
+  background-color: var(--main-color);
+  display: block;
+}
+.skills .statistics .html .progress span {
+  width: 80%;
+}
+.skills .css .progress span {
+  width: 85%;
+}
+.skills .javascript .progress span {
+  width: 70%;
+}
+.skills .python .progress span {
+  width: 80%;
+}
